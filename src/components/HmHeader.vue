@@ -3,7 +3,9 @@
     <div class="back" @click="back">
       <span class="iconfont iconjiantou2"></span>
     </div>
-    <div class="title"><slot></slot></div>
+    <div class="title">
+      <slot></slot>
+    </div>
     <div class="extra"></div>
   </div>
 </template>
@@ -32,6 +34,7 @@ export default {
   .title {
     flex: 1;
     font-weight: 500;
+    font-size: 18px;
   }
 }
 </style>
