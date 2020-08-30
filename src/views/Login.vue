@@ -21,7 +21,9 @@
         :rules="rules.password"
       />
       <div style="margin: 16px;">
-        <van-button round block type="info" native-type="submit">提交</van-button>
+        <van-button round block type="info" native-type="submit"
+          >提交</van-button
+        >
       </div>
       <p class="tips">
         没有账号？去
@@ -71,10 +73,12 @@ export default {
         password: this.password
       })
       console.log(res.data)
-      const { statusCode, message } = res.data
+      const { statusCode, message, data } = res.data
       if (statusCode === 200) {
         this.$toast.success(message)
-        // 保存token
+        //  登录成功 保存token   id
+        localStorage.setItem('token', data.token)
+        localStorage.setItem('userId', data.user.id)
         // 跳转到个人中心
         this.$router.push('./user')
       } else {
