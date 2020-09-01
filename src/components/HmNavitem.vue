@@ -12,10 +12,13 @@
 export default {
   methods: {
     clickFn() {
-      console.log(this.to)
+      // console.log(this.to)
       if (this.to) {
         this.$router.push(this.to)
       }
+
+      // 触发click事件
+      this.$emit('click')
     }
   },
   props: {

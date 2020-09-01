@@ -1,8 +1,8 @@
 <template>
   <div class="user">
-    <header>
+    <header @click="clickFn">
       <div class="avatar">
-        <img :src="$axios.defaults.baseURL + user.head_img" alt />
+        <img :src="base + user.head_img" alt />
       </div>
       <div class="info">
         <div class="name">
@@ -30,7 +30,7 @@
       <template>我的收藏</template>
       <template #content>文章/视频</template>
     </hm-navitem>
-    <hm-navitem to="/edit">设置</hm-navitem>
+    <hm-navitem to="/user-edit">设置</hm-navitem>
     <div style="margin: 15px;">
       <van-button type="info" block @click="logout">退出</van-button>
     </div>
@@ -39,6 +39,11 @@
 
 <script>
 export default {
+  computed: {
+    base() {
+      return this.$axios.defaults.baseURL
+    }
+  },
   data() {
     return {
       user: ''
@@ -74,6 +79,9 @@ export default {
       localStorage.removeItem('userId')
       this.$router.push('/login')
       this.$toast('退出成功')
+    },
+    clickFn() {
+      this.$router.push('/user-edit')
     }
   }
 }
