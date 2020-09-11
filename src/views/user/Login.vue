@@ -21,9 +21,7 @@
         :rules="rules.password"
       />
       <div style="margin: 16px;">
-        <van-button round block type="info" native-type="submit"
-          >提交</van-button
-        >
+        <van-button round block type="info" native-type="submit">提交</van-button>
       </div>
       <p class="tips">
         没有账号？去
@@ -80,7 +78,11 @@ export default {
         localStorage.setItem('token', data.token)
         localStorage.setItem('userId', data.user.id)
         // 跳转到个人中心
-        this.$router.push('./user')
+        if (this.$route.query.back) {
+          this.$router.back()
+        } else {
+          this.$router.push('./user')
+        }
       } else {
         this.$toast.fail(message)
       }

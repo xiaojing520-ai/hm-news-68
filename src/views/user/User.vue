@@ -2,7 +2,8 @@
   <div class="user">
     <header @click="clickFn">
       <div class="avatar">
-        <img :src="base + user.head_img" alt />
+        <!-- 路径必须拼成绝对路径 -->
+        <img v-if="user.head_img" :src="$base + user.head_img" alt />
       </div>
       <div class="info">
         <div class="name">
@@ -26,7 +27,7 @@
       <template>我的跟帖</template>
       <template #content>跟帖/回复</template>
     </hm-navitem>
-    <hm-navitem>
+    <hm-navitem to="/mystar">
       <template>我的收藏</template>
       <template #content>文章/视频</template>
     </hm-navitem>
@@ -39,14 +40,9 @@
 
 <script>
 export default {
-  computed: {
-    base() {
-      return this.$axios.defaults.baseURL
-    }
-  },
   data() {
     return {
-      user: ''
+      user: {}
     }
   },
   async created() {

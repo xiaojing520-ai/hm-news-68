@@ -13,5 +13,6 @@ module.exports = {
     // key: 规则的名字  off: 关闭这条规则  不能有空格
     'space-before-function-paren': ['error', 'never'],
     'comma-dangle': [2, 'never'] // 逗号不使用悬挂
+    // 'space-before-function-paren': 0
   }
 }
